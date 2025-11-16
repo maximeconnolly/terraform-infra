@@ -2,13 +2,10 @@ resource "digitalocean_record" "CNAME-www" {
     domain = digitalocean_domain.maximeconnollyxyz.id
     type = "CNAME"
     name = "www"
-    value = "@"
+    value = "maximeconnolly.xyz."
 }
 
-resource "digitalocean_record" "CNAME-secs1027" {
-    domain = digitalocean_domain.maximeconnollyxyz.id
-    type = "CNAME"
-    name = "secs1027"
-    value = "${digitalocean_database_cluster.mysql-secs1027.host}."
-}
+# SECURITY FIX: Removed public database CNAME record
+# Database should only be accessed via private network from droplets
+# Original CNAME: secs1027 -> database host (REMOVED for security)
 
